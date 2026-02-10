@@ -7,574 +7,178 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #0d0f14;
-      --surface: #161922;
-      --surface2: #1e2230;
-      --border: #2a2f42;
-      --border2: #353c55;
-      --text: #e8eaf2;
-      --text-muted: #6b738f;
-      --text-dim: #4a5068;
-      --accent: #5b7fff;
-      --accent2: #7c5cfc;
-      --R: #ff5e7d;
-      --A: #ffb547;
-      --C: #38d9a9;
-      --I: #5b7fff;
-      --R-bg: rgba(255,94,125,0.12);
-      --A-bg: rgba(255,181,71,0.12);
-      --C-bg: rgba(56,217,169,0.12);
-      --I-bg: rgba(91,127,255,0.12);
+      --bg: #0d0f14; --surface: #161922; --surface2: #1e2230;
+      --border: #2a2f42; --border2: #353c55;
+      --text: #e8eaf2; --text-muted: #6b738f; --text-dim: #4a5068;
+      --accent: #5b7fff; --accent2: #7c5cfc;
+      --R: #ff5e7d; --A: #ffb547; --C: #38d9a9; --I: #5b7fff;
+      --R-bg: rgba(255,94,125,0.12); --A-bg: rgba(255,181,71,0.12);
+      --C-bg: rgba(56,217,169,0.12); --I-bg: rgba(91,127,255,0.12);
       --none-bg: rgba(255,255,255,0.03);
     }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: auto; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-      overflow-x: auto;
-    }
-
-    /* HEADER */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 32px;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'DM Mono', monospace;
-      font-weight: 500;
-      font-size: 13px;
-      color: #fff;
-      letter-spacing: -1px;
-    }
-
-    .logo-text {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 18px;
-      letter-spacing: -0.3px;
-    }
-
-    .logo-text span {
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .btn {
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      border: none;
-      transition: all 0.15s ease;
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-    }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px; border-bottom: 1px solid var(--border); background: var(--surface); position: sticky; top: 0; z-index: 100; gap: 12px; flex-wrap: wrap; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-mark { width: 34px; height: 34px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-weight: 500; font-size: 12px; color: #fff; letter-spacing: -1px; line-height: 1.2; text-align: center; }
+    .logo-text { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; }
+    .logo-text span { color: var(--text-muted); font-weight: 400; }
+    .header-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .btn { padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; transition: all 0.15s ease; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .btn-ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
     .btn-ghost:hover { background: var(--surface2); color: var(--text); border-color: var(--border2); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff;
-    }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    .btn-danger {
-      background: transparent;
-      color: #ff6b6b;
-      border: 1px solid rgba(255,107,107,0.3);
-    }
+    .btn-green { background: rgba(56,217,169,0.15); color: var(--C); border: 1px solid rgba(56,217,169,0.3); }
+    .btn-green:hover { background: rgba(56,217,169,0.25); }
+    .btn-amber { background: rgba(255,181,71,0.12); color: var(--A); border: 1px solid rgba(255,181,71,0.3); }
+    .btn-amber:hover { background: rgba(255,181,71,0.22); }
+    .btn-danger { background: transparent; color: #ff6b6b; border: 1px solid rgba(255,107,107,0.3); }
     .btn-danger:hover { background: rgba(255,107,107,0.1); }
 
-    /* MAIN */
-    main {
-      padding: 32px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    /* PROJECT INFO */
-    .project-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 28px;
-      gap: 16px;
-    }
-
-    .project-name-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex: 1;
-    }
-
-    .project-name-input {
-      font-family: 'Syne', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      outline: none;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 2px;
-      transition: border-color 0.2s;
-      flex: 1;
-    }
+    main { padding: 28px; max-width: 1400px; margin: 0 auto; }
+    .project-bar { display: flex; align-items: center; margin-bottom: 24px; gap: 16px; }
+    .project-name-input { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; background: transparent; border: none; color: var(--text); outline: none; border-bottom: 2px solid transparent; padding-bottom: 2px; transition: border-color 0.2s; flex: 1; }
     .project-name-input:focus { border-color: var(--accent); }
     .project-name-input::placeholder { color: var(--text-dim); }
 
-    /* LEGEND */
-    .legend {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 6px 12px;
-      font-size: 12px;
-    }
-
-    .legend-badge {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-    }
-
+    .legend { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .legend-item { display: flex; align-items: center; gap: 7px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-size: 12px; }
+    .legend-badge { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; }
     .legend-item.R .legend-badge { background: var(--R-bg); color: var(--R); }
     .legend-item.A .legend-badge { background: var(--A-bg); color: var(--A); }
     .legend-item.C .legend-badge { background: var(--C-bg); color: var(--C); }
     .legend-item.I .legend-badge { background: var(--I-bg); color: var(--I); }
-
     .legend-label { color: var(--text-muted); }
     .legend-label strong { color: var(--text); font-weight: 500; }
 
-    /* TABLE CONTAINER */
-    .table-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-    }
-
-    thead th {
-      padding: 0;
-      background: var(--surface2);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    /* Task column header */
-    thead th.th-task {
-      min-width: 220px;
-      text-align: left;
-      padding: 14px 20px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-    }
-
-    /* Role column header */
-    .th-role-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      padding: 12px 10px 10px;
-      min-width: 100px;
-      position: relative;
-    }
-
-    .th-role-name {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
-      text-align: center;
-      word-break: break-word;
-      cursor: pointer;
-      padding: 3px 6px;
-      border-radius: 5px;
-      border: 1px solid transparent;
-      transition: all 0.15s;
-      width: 100%;
-      background: transparent;
-      font-family: 'DM Sans', sans-serif;
-      outline: none;
-    }
+    .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 600px; }
+    thead th { padding: 0; background: var(--surface2); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
+    thead th.th-task { min-width: 220px; text-align: left; padding: 14px 20px; font-family: 'DM Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+    .th-role-inner { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 10px 10px; min-width: 100px; position: relative; }
+    .th-role-name { font-size: 13px; font-weight: 500; color: var(--text); text-align: center; word-break: break-word; padding: 3px 6px; border-radius: 5px; border: 1px solid transparent; transition: all 0.15s; width: 100%; background: transparent; font-family: 'DM Sans', sans-serif; outline: none; }
     .th-role-name:focus { border-color: var(--accent); background: var(--surface); }
-
-    .th-role-sub {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--text-dim);
-      letter-spacing: 0.5px;
-    }
-
-    .th-role-del {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      width: 18px;
-      height: 18px;
-      border-radius: 5px;
-      border: none;
-      background: transparent;
-      color: var(--text-dim);
-      cursor: pointer;
-      font-size: 12px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.15s;
-    }
+    .th-role-sub { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.5px; }
+    .th-role-del { position: absolute; top: 6px; right: 6px; width: 18px; height: 18px; border-radius: 5px; border: none; background: transparent; color: var(--text-dim); cursor: pointer; font-size: 12px; display: none; align-items: center; justify-content: center; transition: all 0.15s; }
     thead th:hover .th-role-del { display: flex; }
     .th-role-del:hover { background: rgba(255,107,107,0.2); color: #ff6b6b; }
 
-    /* ROWS */
-    tbody tr {
-      border-bottom: 1px solid var(--border);
-      transition: background 0.12s;
-    }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.12s; }
     tbody tr:last-child { border-bottom: none; }
     tbody tr:hover { background: rgba(255,255,255,0.02); }
-
-    /* Task cell */
-    td.td-task {
-      padding: 10px 20px;
-      vertical-align: middle;
-    }
-
-    .task-row-inner {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .task-number {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--text-dim);
-      min-width: 22px;
-    }
-
-    .task-name-input {
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text);
-      font-size: 14px;
-      font-family: 'DM Sans', sans-serif;
-      padding: 5px 8px;
-      border-radius: 6px;
-      outline: none;
-      flex: 1;
-      transition: border-color 0.15s;
-    }
+    td.td-task { padding: 10px 20px; vertical-align: middle; }
+    .task-row-inner { display: flex; align-items: center; gap: 8px; }
+    .task-number { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); min-width: 22px; }
+    .task-name-input { background: transparent; border: 1px solid transparent; color: var(--text); font-size: 14px; font-family: 'DM Sans', sans-serif; padding: 5px 8px; border-radius: 6px; outline: none; flex: 1; transition: border-color 0.15s; }
     .task-name-input:focus { border-color: var(--accent); background: var(--surface2); }
     .task-name-input::placeholder { color: var(--text-dim); }
-
-    .task-del-btn {
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
-      border: none;
-      background: transparent;
-      color: var(--text-dim);
-      cursor: pointer;
-      font-size: 14px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: all 0.15s;
-    }
+    .task-del-btn { width: 26px; height: 26px; border-radius: 6px; border: none; background: transparent; color: var(--text-dim); cursor: pointer; font-size: 14px; display: none; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; }
     tr:hover .task-del-btn { display: flex; }
     .task-del-btn:hover { background: rgba(255,107,107,0.15); color: #ff6b6b; }
 
-    /* RACI cell */
-    td.td-raci {
-      text-align: center;
-      vertical-align: middle;
-      padding: 8px 6px;
-    }
-
-    .raci-cycle {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      margin: 0 auto;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'DM Mono', monospace;
-      font-size: 15px;
-      font-weight: 500;
-      transition: all 0.15s ease;
-      border: 2px solid transparent;
-      user-select: none;
-      position: relative;
-    }
-
-    .raci-cycle[data-val=""] {
-      background: var(--none-bg);
-      color: var(--text-dim);
-      border-color: transparent;
-    }
-    .raci-cycle[data-val=""]:hover { background: var(--surface2); border-color: var(--border2); color: var(--text-muted); }
+    td.td-raci { text-align: center; vertical-align: middle; padding: 8px 6px; }
+    .raci-cycle { width: 44px; height: 44px; border-radius: 10px; margin: 0 auto; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 15px; font-weight: 500; transition: all 0.15s ease; border: 2px solid transparent; user-select: none; }
+    .raci-cycle[data-val=""] { background: var(--none-bg); color: var(--text-dim); }
+    .raci-cycle[data-val=""]:hover { background: var(--surface2); border-color: var(--border2); }
     .raci-cycle[data-val=""]::after { content: '—'; font-size: 13px; }
-
     .raci-cycle[data-val="R"] { background: var(--R-bg); color: var(--R); border-color: rgba(255,94,125,0.3); }
-    .raci-cycle[data-val="R"]:hover { filter: brightness(1.15); }
-
     .raci-cycle[data-val="A"] { background: var(--A-bg); color: var(--A); border-color: rgba(255,181,71,0.3); }
-    .raci-cycle[data-val="A"]:hover { filter: brightness(1.15); }
-
     .raci-cycle[data-val="C"] { background: var(--C-bg); color: var(--C); border-color: rgba(56,217,169,0.3); }
-    .raci-cycle[data-val="C"]:hover { filter: brightness(1.15); }
-
     .raci-cycle[data-val="I"] { background: var(--I-bg); color: var(--I); border-color: rgba(91,127,255,0.3); }
-    .raci-cycle[data-val="I"]:hover { filter: brightness(1.15); }
+    .raci-cycle:not([data-val=""]):hover { filter: brightness(1.15); }
+    .raci-cycle:active { transform: scale(0.88); }
 
-    .raci-cycle:active { transform: scale(0.9); }
-
-    /* ADD ROW / COL */
-    .add-row-tr td {
-      padding: 8px 20px;
-    }
-
-    .add-btn-inline {
-      background: transparent;
-      border: 1px dashed var(--border2);
-      color: var(--text-muted);
-      border-radius: 8px;
-      padding: 7px 14px;
-      font-size: 13px;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .add-row-tr td { padding: 8px 20px; }
+    .add-btn-inline { background: transparent; border: 1px dashed var(--border2); color: var(--text-muted); border-radius: 8px; padding: 7px 14px; font-size: 13px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; display: flex; align-items: center; gap: 6px; }
     .add-btn-inline:hover { border-color: var(--accent); color: var(--accent); background: var(--I-bg); }
-
-    /* ADD ROLE */
-    .th-add-role {
-      padding: 0 !important;
-      vertical-align: middle;
-    }
-    .add-role-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      padding: 12px 16px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      color: var(--text-muted);
-      font-size: 12px;
-      font-family: 'DM Sans', sans-serif;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
+    .th-add-role { padding: 0 !important; vertical-align: middle; }
+    .add-role-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 16px; background: transparent; border: none; cursor: pointer; color: var(--text-muted); font-size: 12px; font-family: 'DM Sans', sans-serif; transition: all 0.15s; white-space: nowrap; }
     .add-role-btn:hover { color: var(--accent); }
     .add-role-icon { font-size: 20px; line-height: 1; }
 
-    /* STATS */
-    .stats-bar {
-      display: flex;
-      gap: 12px;
-      margin-top: 24px;
-      flex-wrap: wrap;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .stat-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 3px;
-    }
-
+    .stats-bar { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
+    .stat-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
     .stat-label { font-size: 12px; color: var(--text-muted); }
     .stat-count { font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 500; color: var(--text); }
 
-    /* TOAST */
-    .toast {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      background: var(--surface2);
-      border: 1px solid var(--border2);
-      border-radius: 10px;
-      padding: 12px 20px;
-      font-size: 13px;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.25s ease;
-      pointer-events: none;
-      z-index: 999;
-    }
+    .toast { position: fixed; bottom: 28px; right: 28px; background: var(--surface2); border: 1px solid var(--border2); border-radius: 10px; padding: 12px 20px; font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 10px; opacity: 0; transform: translateY(10px); transition: all 0.25s ease; pointer-events: none; z-index: 999; }
     .toast.show { opacity: 1; transform: translateY(0); }
-    .toast-icon { font-size: 16px; }
 
-    /* MODAL */
-    .modal-overlay {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      backdrop-filter: blur(4px);
-    }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); display: none; align-items: center; justify-content: center; z-index: 200; backdrop-filter: blur(4px); }
     .modal-overlay.open { display: flex; }
-
-    .modal {
-      background: var(--surface);
-      border: 1px solid var(--border2);
-      border-radius: 16px;
-      padding: 28px;
-      width: 420px;
-      max-width: 95vw;
-    }
-
-    .modal h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .modal p { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
-
-    .modal-input {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      padding: 10px 14px;
-      color: var(--text);
-      font-size: 14px;
-      font-family: 'DM Sans', sans-serif;
-      outline: none;
-      transition: border-color 0.15s;
-      margin-bottom: 16px;
-    }
+    .modal { background: var(--surface); border: 1px solid var(--border2); border-radius: 16px; padding: 28px; width: 480px; max-width: 95vw; max-height: 90vh; display: flex; flex-direction: column; }
+    .modal h2 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .modal .modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+    .modal-input { width: 100%; background: var(--bg); border: 1px solid var(--border2); border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.15s; margin-bottom: 16px; }
     .modal-input:focus { border-color: var(--accent); }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; flex-shrink: 0; }
+    .email-body-wrap { flex: 1; overflow-y: auto; background: var(--bg); border: 1px solid var(--border2); border-radius: 10px; padding: 16px; margin-bottom: 16px; font-family: 'DM Mono', monospace; font-size: 12.5px; line-height: 1.7; color: #b0b8d0; white-space: pre-wrap; word-break: break-word; min-height: 260px; max-height: 400px; }
 
-    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-
-    @keyframes pop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.25); }
-      100% { transform: scale(1); }
+    /* ── PRINT / PDF STYLES ── */
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      body { background: #fff !important; color: #111 !important; }
+      header, .legend, .stats-bar, .add-row-tr, .task-del-btn,
+      .th-role-del, .add-role-btn, .th-add-role, .modal-overlay, .toast { display: none !important; }
+      main { padding: 0 20px !important; max-width: 100% !important; }
+      .project-bar { margin-bottom: 14px !important; border-bottom: 2px solid #222; padding-bottom: 10px; }
+      .project-name-input { font-size: 20px !important; color: #111 !important; border: none !important; pointer-events: none; }
+      .table-wrap { border: 1px solid #ccc !important; border-radius: 0 !important; background: #fff !important; overflow: visible !important; }
+      table { width: 100% !important; }
+      thead th { background: #f3f4f8 !important; border-bottom: 2px solid #bbb !important; }
+      thead th.th-task { color: #555 !important; padding: 10px 14px !important; }
+      .th-role-inner { padding: 10px 8px !important; }
+      .th-role-name { color: #111 !important; font-weight: 600 !important; background: transparent !important; border: none !important; pointer-events: none; font-size: 12px !important; }
+      .th-role-sub { color: #999 !important; }
+      tbody tr { border-bottom: 1px solid #e5e7eb !important; page-break-inside: avoid; }
+      td.td-task { background: #fff !important; padding: 8px 14px !important; }
+      .task-number { color: #bbb !important; }
+      .task-name-input { color: #111 !important; background: transparent !important; border: none !important; pointer-events: none; font-size: 13px !important; }
+      td.td-raci { padding: 6px 4px !important; }
+      .raci-cycle { width: 36px !important; height: 36px !important; font-size: 13px !important; border: 1.5px solid #ddd !important; border-radius: 7px !important; }
+      .raci-cycle[data-val="R"] { background: #ffe4eb !important; color: #b0003a !important; border-color: #f9a8b8 !important; }
+      .raci-cycle[data-val="A"] { background: #fff4d6 !important; color: #92400e !important; border-color: #fcd34d !important; }
+      .raci-cycle[data-val="C"] { background: #d1fae5 !important; color: #065f46 !important; border-color: #6ee7b7 !important; }
+      .raci-cycle[data-val="I"] { background: #dbeafe !important; color: #1d4ed8 !important; border-color: #93c5fd !important; }
+      .raci-cycle[data-val=""] { background: #f9fafb !important; color: #ccc !important; border-color: #eee !important; }
+      .raci-cycle[data-val=""]::after { content: '—'; font-size: 11px; }
+      .print-legend { display: block !important; margin-top: 18px; }
+      .print-footer { display: block !important; }
     }
-    .popped { animation: pop 0.2s ease; }
+    .print-legend { display: none; border-top: 1px solid #ddd; padding-top: 14px; font-size: 11px; color: #666; }
+    .print-legend-items { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 6px; }
+    .print-legend-item { display: flex; align-items: center; gap: 5px; }
+    .print-legend-badge { width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; font-family: monospace; }
+    .print-footer { display: none; font-size: 11px; color: #aaa; margin-top: 10px; text-align: center; border-top: 1px solid #eee; padding-top: 10px; }
+
+    @keyframes pop { 0%,100%{transform:scale(1)} 50%{transform:scale(1.22)} }
+    .popped { animation: pop 0.18s ease; }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="logo">
     <div class="logo-mark">RA<br>CI</div>
     <div class="logo-text">RACI <span>Matrix</span></div>
   </div>
   <div class="header-actions">
-    <button class="btn btn-ghost" onclick="clearAll()">🗑 Clear All</button>
+    <button class="btn btn-ghost" onclick="clearAll()">🗑 Clear</button>
     <button class="btn btn-ghost" onclick="saveData()">💾 Save</button>
+    <button class="btn btn-amber" onclick="openEmailModal()">✉️ Email Draft</button>
+    <button class="btn btn-green" onclick="exportPDF()">📄 Export PDF</button>
     <button class="btn btn-primary" onclick="openNewProject()">＋ New Project</button>
   </div>
 </header>
 
 <main>
-  <!-- PROJECT NAME -->
   <div class="project-bar">
-    <div class="project-name-wrap">
-      <input id="project-name" class="project-name-input" placeholder="Untitled Project" value="Website Redesign 2024" />
-    </div>
+    <input id="project-name" class="project-name-input" placeholder="Untitled Project" value="Website Redesign 2024"/>
   </div>
 
-  <!-- LEGEND -->
   <div class="legend">
     <div class="legend-item R"><div class="legend-badge">R</div><div class="legend-label"><strong>Responsible</strong> — does the work</div></div>
     <div class="legend-item A"><div class="legend-badge">A</div><div class="legend-label"><strong>Accountable</strong> — signs off</div></div>
@@ -582,7 +186,6 @@
     <div class="legend-item I"><div class="legend-badge">I</div><div class="legend-label"><strong>Informed</strong> — kept in the loop</div></div>
   </div>
 
-  <!-- TABLE -->
   <div class="table-wrap">
     <table id="raci-table">
       <thead id="table-head"></thead>
@@ -590,21 +193,29 @@
     </table>
   </div>
 
-  <!-- STATS -->
+  <!-- Print-only legend -->
+  <div class="print-legend">
+    <strong>RACI KEY</strong>
+    <div class="print-legend-items">
+      <div class="print-legend-item"><div class="print-legend-badge" style="background:#ffe4eb;color:#b0003a">R</div> Responsible — executes the task</div>
+      <div class="print-legend-item"><div class="print-legend-badge" style="background:#fff4d6;color:#92400e">A</div> Accountable — signs off</div>
+      <div class="print-legend-item"><div class="print-legend-badge" style="background:#d1fae5;color:#065f46">C</div> Consulted — provides input</div>
+      <div class="print-legend-item"><div class="print-legend-badge" style="background:#dbeafe;color:#1d4ed8">I</div> Informed — kept in the loop</div>
+    </div>
+  </div>
+  <div class="print-footer" id="print-footer"></div>
+
   <div class="stats-bar" id="stats-bar"></div>
 </main>
 
 <!-- TOAST -->
-<div class="toast" id="toast">
-  <span class="toast-icon">✅</span>
-  <span id="toast-msg">Saved!</span>
-</div>
+<div class="toast" id="toast"><span id="toast-msg"></span></div>
 
-<!-- MODAL: new role -->
+<!-- MODAL: add role -->
 <div class="modal-overlay" id="role-modal">
   <div class="modal">
     <h2>Add Role</h2>
-    <p>Enter the name of the new team role or member.</p>
+    <p class="modal-sub">Enter the name of the new team role or member.</p>
     <input id="role-input" class="modal-input" placeholder="e.g. Product Manager" maxlength="40"/>
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="closeModal('role-modal')">Cancel</button>
@@ -617,7 +228,7 @@
 <div class="modal-overlay" id="project-modal">
   <div class="modal">
     <h2>New Project</h2>
-    <p>This will clear the current board. Enter the name of your new project.</p>
+    <p class="modal-sub">This will clear the current board. Enter the name of your new project.</p>
     <input id="project-input" class="modal-input" placeholder="e.g. Mobile App Launch" maxlength="60"/>
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="closeModal('project-modal')">Cancel</button>
@@ -626,264 +237,257 @@
   </div>
 </div>
 
+<!-- MODAL: email draft -->
+<div class="modal-overlay" id="email-modal">
+  <div class="modal" style="width:600px;">
+    <h2>✉️ Email Draft</h2>
+    <p class="modal-sub">Copy this into your email client to share responsibilities with your team.</p>
+    <div class="email-body-wrap" id="email-body"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('email-modal')">Close</button>
+      <button class="btn btn-amber" onclick="copyEmail()">📋 Copy to Clipboard</button>
+    </div>
+  </div>
+</div>
+
 <script>
-  const CYCLE = ['', 'R', 'A', 'C', 'I'];
-  const STORAGE_KEY = 'raci_data_v2';
+  const CYCLE = ['','R','A','C','I'];
+  const STORAGE_KEY = 'raci_data_v3';
 
   let state = {
     project: 'Website Redesign 2024',
-    roles: ['Project Manager', 'Designer', 'Developer', 'Stakeholder'],
+    roles: ['Project Manager','Designer','Developer','Stakeholder'],
     tasks: [
-      { id: 1, name: 'Define project scope', cells: ['A', 'C', 'R', 'I'] },
-      { id: 2, name: 'Wireframe creation', cells: ['C', 'R', 'I', 'I'] },
-      { id: 3, name: 'Backend development', cells: ['I', '', 'R', ''] },
-      { id: 4, name: 'UI implementation', cells: ['I', 'A', 'R', ''] },
-      { id: 5, name: 'User testing', cells: ['A', 'R', 'C', 'I'] },
+      {id:1, name:'Define project scope',  cells:['A','C','R','I']},
+      {id:2, name:'Wireframe creation',     cells:['C','R','I','I']},
+      {id:3, name:'Backend development',    cells:['I', '','R', '']},
+      {id:4, name:'UI implementation',      cells:['I','A','R', '']},
+      {id:5, name:'User testing',           cells:['A','R','C','I']},
     ],
     nextId: 6
   };
 
+  // PERSISTENCE
   function loadState() {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        state = JSON.parse(saved);
-        document.getElementById('project-name').value = state.project || '';
-      }
+      if (saved) state = JSON.parse(saved);
     } catch(e) {}
+    document.getElementById('project-name').value = state.project || '';
   }
 
   function saveData() {
     state.project = document.getElementById('project-name').value;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      toast('Project saved ✓');
-    } catch(e) {
-      toast('Could not save');
-    }
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); toast('💾 Project saved'); }
+    catch(e) { toast('⚠️ Could not save'); }
   }
 
-  function render() {
-    renderHead();
-    renderBody();
-    renderStats();
-  }
+  let autoTimer;
+  function autoSave() { clearTimeout(autoTimer); autoTimer = setTimeout(saveData, 900); }
+
+  // RENDER
+  function render() { renderHead(); renderBody(); renderStats(); }
 
   function renderHead() {
     const head = document.getElementById('table-head');
-    let html = '<tr>';
-    html += `<th class="th-task">Task / Activity</th>`;
+    let h = '<tr><th class="th-task">Task / Activity</th>';
     state.roles.forEach((role, ri) => {
-      html += `<th>
-        <div class="th-role-inner">
-          <input class="th-role-name" value="${escHtml(role)}" onchange="renameRole(${ri}, this.value)" title="Click to rename"/>
-          <span class="th-role-sub">role ${ri+1}</span>
-          <button class="th-role-del" onclick="deleteRole(${ri})" title="Remove role">✕</button>
-        </div>
-      </th>`;
+      h += `<th><div class="th-role-inner">
+        <input class="th-role-name" value="${esc(role)}" onchange="renameRole(${ri},this.value)"/>
+        <span class="th-role-sub">role ${ri+1}</span>
+        <button class="th-role-del" onclick="deleteRole(${ri})">✕</button>
+      </div></th>`;
     });
-    html += `<th class="th-add-role">
-      <button class="add-role-btn" onclick="openAddRole()">
-        <span class="add-role-icon">＋</span>
-        <span>Role</span>
-      </button>
-    </th>`;
-    html += '</tr>';
-    head.innerHTML = html;
+    h += `<th class="th-add-role"><button class="add-role-btn" onclick="openAddRole()"><span class="add-role-icon">＋</span><span>Role</span></button></th></tr>`;
+    head.innerHTML = h;
   }
 
   function renderBody() {
     const body = document.getElementById('table-body');
-    let html = '';
+    let h = '';
     state.tasks.forEach((task, ti) => {
-      html += `<tr>
-        <td class="td-task">
-          <div class="task-row-inner">
-            <span class="task-number">${String(ti+1).padStart(2,'0')}</span>
-            <input class="task-name-input" value="${escHtml(task.name)}" 
-                   onchange="renameTask(${ti}, this.value)"
-                   placeholder="Task name…"/>
-            <button class="task-del-btn" onclick="deleteTask(${ti})" title="Delete task">✕</button>
-          </div>
-        </td>`;
-      state.roles.forEach((_, ri) => {
-        const val = task.cells[ri] || '';
-        html += `<td class="td-raci">
-          <div class="raci-cycle" data-val="${val}" 
-               onclick="cycleCell(${ti}, ${ri}, this)"
-               title="Click to cycle: — → R → A → C → I">${val}</div>
-        </td>`;
+      h += `<tr><td class="td-task"><div class="task-row-inner">
+        <span class="task-number">${String(ti+1).padStart(2,'0')}</span>
+        <input class="task-name-input" value="${esc(task.name)}" onchange="renameTask(${ti},this.value)" placeholder="Task name…"/>
+        <button class="task-del-btn" onclick="deleteTask(${ti})">✕</button>
+      </div></td>`;
+      state.roles.forEach((_,ri) => {
+        const v = task.cells[ri] || '';
+        h += `<td class="td-raci"><div class="raci-cycle" data-val="${v}" onclick="cycleCell(${ti},${ri},this)">${v}</div></td>`;
       });
-      html += `<td></td></tr>`;
+      h += `<td></td></tr>`;
     });
-    // Add task row
-    html += `<tr class="add-row-tr">
-      <td colspan="${state.roles.length + 2}">
-        <button class="add-btn-inline" onclick="addTask()">
-          ＋ Add task or activity
-        </button>
-      </td>
-    </tr>`;
-    body.innerHTML = html;
+    h += `<tr class="add-row-tr"><td colspan="${state.roles.length+2}"><button class="add-btn-inline" onclick="addTask()">＋ Add task or activity</button></td></tr>`;
+    body.innerHTML = h;
   }
 
   function renderStats() {
     const bar = document.getElementById('stats-bar');
-    const counts = { R: 0, A: 0, C: 0, I: 0 };
-    state.tasks.forEach(t => t.cells.forEach(c => { if (counts[c] !== undefined) counts[c]++; }));
-    const colors = { R: 'var(--R)', A: 'var(--A)', C: 'var(--C)', I: 'var(--I)' };
-    const labels = { R: 'Responsible', A: 'Accountable', C: 'Consulted', I: 'Informed' };
-    bar.innerHTML = Object.entries(counts).map(([k, v]) => `
+    const cnt = {R:0,A:0,C:0,I:0};
+    state.tasks.forEach(t => t.cells.forEach(c => { if(cnt[c]!==undefined) cnt[c]++; }));
+    const colors = {R:'var(--R)',A:'var(--A)',C:'var(--C)',I:'var(--I)'};
+    const labels = {R:'Responsible',A:'Accountable',C:'Consulted',I:'Informed'};
+    bar.innerHTML = Object.entries(cnt).map(([k,v])=>`
       <div class="stat-card">
         <div class="stat-dot" style="background:${colors[k]}"></div>
-        <div>
-          <div class="stat-count">${v}</div>
-          <div class="stat-label">${labels[k]}</div>
-        </div>
-      </div>
-    `).join('') + `
-      <div class="stat-card">
-        <div class="stat-dot" style="background:var(--text-muted)"></div>
-        <div>
-          <div class="stat-count">${state.tasks.length}</div>
-          <div class="stat-label">Tasks</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-dot" style="background:var(--accent2)"></div>
-        <div>
-          <div class="stat-count">${state.roles.length}</div>
-          <div class="stat-label">Roles</div>
-        </div>
-      </div>
-    `;
+        <div><div class="stat-count">${v}</div><div class="stat-label">${labels[k]}</div></div>
+      </div>`).join('') +
+      `<div class="stat-card"><div class="stat-dot" style="background:var(--text-muted)"></div><div><div class="stat-count">${state.tasks.length}</div><div class="stat-label">Tasks</div></div></div>
+       <div class="stat-card"><div class="stat-dot" style="background:var(--accent2)"></div><div><div class="stat-count">${state.roles.length}</div><div class="stat-label">Roles</div></div></div>`;
   }
 
+  // CELL
   function cycleCell(ti, ri, el) {
     const cur = state.tasks[ti].cells[ri] || '';
-    const idx = CYCLE.indexOf(cur);
-    const next = CYCLE[(idx + 1) % CYCLE.length];
+    const next = CYCLE[(CYCLE.indexOf(cur)+1) % CYCLE.length];
     state.tasks[ti].cells[ri] = next;
     el.setAttribute('data-val', next);
     el.textContent = next;
-    el.classList.remove('popped');
-    void el.offsetWidth;
-    el.classList.add('popped');
-    renderStats();
-    autoSave();
+    el.classList.remove('popped'); void el.offsetWidth; el.classList.add('popped');
+    renderStats(); autoSave();
   }
 
+  // TASKS
   function addTask() {
-    state.tasks.push({ id: state.nextId++, name: '', cells: new Array(state.roles.length).fill('') });
+    state.tasks.push({id: state.nextId++, name:'', cells: new Array(state.roles.length).fill('')});
     render();
-    // Focus new input
     const inputs = document.querySelectorAll('.task-name-input');
-    if (inputs.length) inputs[inputs.length - 1].focus();
+    if (inputs.length) inputs[inputs.length-1].focus();
   }
+  function deleteTask(ti) { state.tasks.splice(ti,1); render(); autoSave(); }
+  function renameTask(ti,val) { state.tasks[ti].name = val; autoSave(); }
 
-  function deleteTask(ti) {
-    state.tasks.splice(ti, 1);
-    render();
-    autoSave();
-  }
-
-  function renameTask(ti, val) {
-    state.tasks[ti].name = val;
-    autoSave();
-  }
-
-  function renameRole(ri, val) {
-    state.roles[ri] = val;
-    autoSave();
-  }
-
+  // ROLES
+  function renameRole(ri,val) { state.roles[ri] = val; autoSave(); }
   function deleteRole(ri) {
-    if (state.roles.length <= 1) { toast('Need at least 1 role'); return; }
-    state.roles.splice(ri, 1);
-    state.tasks.forEach(t => t.cells.splice(ri, 1));
-    render();
-    autoSave();
+    if (state.roles.length<=1) { toast('⚠️ Need at least 1 role'); return; }
+    state.roles.splice(ri,1);
+    state.tasks.forEach(t => t.cells.splice(ri,1));
+    render(); autoSave();
   }
-
   function openAddRole() {
-    document.getElementById('role-input').value = '';
+    document.getElementById('role-input').value='';
     openModal('role-modal');
-    setTimeout(() => document.getElementById('role-input').focus(), 100);
+    setTimeout(()=>document.getElementById('role-input').focus(),100);
   }
-
   function confirmAddRole() {
     const val = document.getElementById('role-input').value.trim();
     if (!val) return;
     state.roles.push(val);
-    state.tasks.forEach(t => t.cells.push(''));
-    closeModal('role-modal');
-    render();
-    autoSave();
+    state.tasks.forEach(t=>t.cells.push(''));
+    closeModal('role-modal'); render(); autoSave();
   }
 
+  // PROJECT
   function openNewProject() {
-    document.getElementById('project-input').value = '';
+    document.getElementById('project-input').value='';
     openModal('project-modal');
-    setTimeout(() => document.getElementById('project-input').focus(), 100);
+    setTimeout(()=>document.getElementById('project-input').focus(),100);
   }
-
   function confirmNewProject() {
     const val = document.getElementById('project-input').value.trim();
-    state = {
-      project: val || 'Untitled Project',
-      roles: ['Role 1', 'Role 2', 'Role 3'],
-      tasks: [{ id: 1, name: '', cells: ['', '', ''] }],
-      nextId: 2
-    };
+    state = {project:val||'Untitled Project', roles:['Role 1','Role 2','Role 3'], tasks:[{id:1,name:'',cells:['','','']}], nextId:2};
     document.getElementById('project-name').value = state.project;
-    closeModal('project-modal');
-    render();
-    autoSave();
+    closeModal('project-modal'); render(); autoSave();
   }
 
   function clearAll() {
-    if (!confirm('Clear all assignments? (roles and tasks stay)')) return;
-    state.tasks.forEach(t => { t.cells = t.cells.map(() => ''); });
-    render();
-    autoSave();
-    toast('All assignments cleared');
+    if(!confirm('Clear all assignments? Roles and tasks will stay.')) return;
+    state.tasks.forEach(t=>{ t.cells=t.cells.map(()=>''); });
+    render(); autoSave(); toast('🗑 Assignments cleared');
   }
 
+  // PDF EXPORT
+  function exportPDF() {
+    const project = document.getElementById('project-name').value || 'RACI Matrix';
+    const date = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+    document.getElementById('print-footer').textContent =
+      `${project}  ·  Exported ${date}  ·  RACI Matrix`;
+    window.print();
+  }
+
+  // EMAIL DRAFT
+  function openEmailModal() {
+    const project = document.getElementById('project-name').value || 'Our Project';
+    const date = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+
+    const roleMap = {};
+    state.roles.forEach(r => { roleMap[r] = {R:[],A:[],C:[],I:[]}; });
+    state.tasks.forEach(task => {
+      if (!task.name.trim()) return;
+      task.cells.forEach((cell,ri) => {
+        if (cell && roleMap[state.roles[ri]]) roleMap[state.roles[ri]][cell].push(task.name.trim());
+      });
+    });
+
+    const roleDesc = {R:'Responsible for executing',A:'Accountable / decision owner',C:'Consulted for input & expertise',I:'Informed / kept updated'};
+    const sep = '─'.repeat(54);
+    const sep2 = '═'.repeat(54);
+
+    let body = `Subject: RACI Responsibilities — ${project}\n${sep}\n\n`;
+    body += `Hi team,\n\nPlease find below the responsibility matrix for: ${project}.\n`;
+    body += `This document outlines each person's role across all key tasks.\n\nGenerated: ${date}\n${sep2}\n\n`;
+
+    state.roles.forEach(role => {
+      const data = roleMap[role];
+      const hasAny = Object.values(data).some(a=>a.length>0);
+      body += `▸ ${role.toUpperCase()}\n`;
+      if (!hasAny) {
+        body += `   No assignments yet.\n`;
+      } else {
+        ['R','A','C','I'].forEach(type => {
+          if (data[type].length > 0) {
+            body += `   [${type}] ${roleDesc[type]}:\n`;
+            data[type].forEach(t => { body += `       • ${t}\n`; });
+          }
+        });
+      }
+      body += '\n';
+    });
+
+    body += `${sep}\nRACIKEY:\n`;
+    body += `   R = Responsible  — Executes the task\n`;
+    body += `   A = Accountable  — Owns the outcome and gives final approval\n`;
+    body += `   C = Consulted    — Subject-matter expert whose input is sought\n`;
+    body += `   I = Informed     — Stakeholder kept in the loop\n\n`;
+    body += `Please review your responsibilities and reach out with any questions.\n\nBest regards`;
+
+    document.getElementById('email-body').textContent = body;
+    openModal('email-modal');
+  }
+
+  function copyEmail() {
+    const text = document.getElementById('email-body').textContent;
+    navigator.clipboard.writeText(text)
+      .then(() => { toast('📋 Copied to clipboard!'); closeModal('email-modal'); })
+      .catch(() => toast('⚠️ Select the text and copy manually'));
+  }
+
+  // MODALS
   function openModal(id) { document.getElementById(id).classList.add('open'); }
   function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-
   document.querySelectorAll('.modal-overlay').forEach(m => {
-    m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+    m.addEventListener('click', e => { if(e.target===m) m.classList.remove('open'); });
   });
+  document.getElementById('role-input').addEventListener('keydown', e=>{ if(e.key==='Enter') confirmAddRole(); });
+  document.getElementById('project-input').addEventListener('keydown', e=>{ if(e.key==='Enter') confirmNewProject(); });
+  document.getElementById('project-name').addEventListener('change', ()=>autoSave());
 
-  document.getElementById('role-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter') confirmAddRole();
-  });
-  document.getElementById('project-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter') confirmNewProject();
-  });
-  document.getElementById('project-name').addEventListener('change', () => autoSave());
-
+  // TOAST
   let toastTimer;
   function toast(msg) {
     const el = document.getElementById('toast');
     document.getElementById('toast-msg').textContent = msg;
     el.classList.add('show');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+    toastTimer = setTimeout(()=>el.classList.remove('show'), 2400);
   }
 
-  let autoSaveTimer;
-  function autoSave() {
-    clearTimeout(autoSaveTimer);
-    autoSaveTimer = setTimeout(() => saveData(), 900);
-  }
-
-  function escHtml(s) {
+  function esc(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  // Init
+  // INIT
   loadState();
   document.getElementById('project-name').value = state.project;
   render();
